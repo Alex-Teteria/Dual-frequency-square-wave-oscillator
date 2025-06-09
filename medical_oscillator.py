@@ -234,10 +234,12 @@ def beep():
         time.sleep_us(130)
     beep_out.value(0)    
 
+try:
+    with open('value.txt') as file:
+        f1 = float(file.readline().rstrip())
+except:
+    f1 = 1234.00
 
-# f1 = 1234.00
-with open('value.txt') as file:
-    f1 = float(file.readline().rstrip())
 f2 = 1234.00
 timer = 10.0
 display_cnt = 0
