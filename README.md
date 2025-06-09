@@ -1,2 +1,37 @@
-# Dual-frequency-square-wave-oscillator
-Dual-frequency square wave oscillator
+# Dual-frequency square wave oscillator
+Двочастотний генератор прямокутних імпульсів
+## Огляд
+На одному виході - імпульси першої частоти - безперервно;  
+на іншому - періодично, 15 сек. імпульси першої частоти, потім 15 сек. - імпульси другої частоти.  
+Тривалість наявності імпульсів на виходах задається таймером в діапазоні 10 - 25 хв. з кроком 0,5 хв.  
+Встановлення чатот та таймера - енкодером типу KY-040.  
+Для індикації - 16х2 LCD дисплей з інтерфейсом I2C.  
+ - діапазон частот 0 - 2,00 кГц
+ - крок встановлення частот 0,01 Гц
+  
+## Схема складання  
+
+![Pico_oscillator_LCD_I2C](https://github.com/user-attachments/assets/b15ad14b-3ca9-4761-a38d-35ed69329179)
+
+
+## Content  
+
+| File | Contain | Purpose |
+| --- |  ---: |  --- |
+| Maze |  |The folder containing the main program codes and auxiliary modules for visualizing path finding in a maze. It is now common to say that this is the result of AI :smile:, but it is simply an implementation of the depth-first search (DFS) or breadth-first search (BFS) algorithm. It looks something like this: [AI finds its way through a maze](https://youtube.com/shorts/KfYbfn5_Zk4) |
+|  | maze_generator.py | Module for creating random mazes |
+|  |graph.py | Contains the Graph class as an undirected graph |
+|  | itertools.py | Contains functions creating iterators |
+|  | maze.py | Main code that implementation of finding a passage in a maze. Switching search modes (DFS or BFS) is done by the button |
+|  | maze_1.txt | Contains the coordinates of the test maze  |
+|  | maze_dfs.py | Implementation of finding a passage in a maze by depth-first search (DFS) algorithm |
+|  | maze_bfs.py | Implementation of finding a passage in a maze by breadth-first search (DFS) algorithm |
+|  | maze_dfs_bfs.py | Route search simulation. One point catches up with another. The first point chooses the shortest route to the second point it is trying to cover. The second point chooses the route to the finish point in the maze. First point using the BFS algorithm. Second point using the DFS algorithm |
+|  | maze_bfs_bfs.py | Route search simulation. One point catches up with another. The first point chooses the shortest route to the second point it is trying to cover. The second point chooses the route to the farthest point in the maze so as not to intersect with the first point. This repeats in a loop until the first point covers the second or until the allotted time runs out |
+||  |  |
+| spiral.py |  | Spiral effect on LED matrix  |
+||  |  |
+| Ghost |  | The folder containing the main program code and auxiliary modules for visualizing moving ghost body pixels. The ghost's color changes depending on the ambient temperature, and its speed of movement depends on pressure. |
+|  | maze.py | Main code that implementation of visualizing moving ghost. A BME280 type sensor was used to measure temperature and pressure |
+|  | ghost_neo.py | Contains the Ghost class - ghost body pixels for WS2816, 16x16 rgb LEDs |
+
